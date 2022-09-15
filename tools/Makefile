@@ -173,9 +173,9 @@ endif
 # MXSImage needs LibSSL
 ifneq ($(CONFIG_MX23)$(CONFIG_MX28)$(CONFIG_ARMADA_38X)$(CONFIG_TOOLS_LIBCRYPTO),)
 HOSTCFLAGS_kwbimage.o += \
-	$(shell pkg-config --cflags libssl libcrypto 2> /dev/null || echo "")
+	-Iopenssl $(shell pkg-config --cflags libssl libcrypto 2> /dev/null || echo "")
 HOSTLDLIBS_mkimage += \
-	$(shell pkg-config --libs libssl libcrypto 2> /dev/null || echo "-lssl -lcrypto")
+	-Wl,-rpath,./openssl -Wl,-L,./openssl $(shell pkg-config --libs libssl libcrypto 2> /dev/null || echo "-lssl -lcrypto")
 
 # OS X deprecate openssl in favour of CommonCrypto, supress deprecation
 # warnings on those systems

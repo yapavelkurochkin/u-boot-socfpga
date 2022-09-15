@@ -21,7 +21,7 @@
 	memory@0 {
 		name = "memory";
 		device_type = "memory";
-		reg = <0x0 0x40000000>; /* 1GB */
+		reg = <0x0 0x80000000>; /* 2GB */
 	};
 
 	a10leds {
@@ -59,7 +59,7 @@
 		clkmgr@ffd04000 {
 			clocks {
 				osc1 {
-					clock-frequency = <25000000>;
+					clock-frequency = <33000000>;
 				};
 			};
 		};
